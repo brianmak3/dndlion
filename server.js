@@ -25,7 +25,7 @@ express = require('express'),
 }),
   upload = multer({ storage : storage, limits: { fieldSize: 10 * 1024 * 1024 }}).single('image'),
   // connect to the database
- //   mongoose.connect('mongodb://nearby:nearby@127.0.0.1/nearBy',{ useNewUrlParser: true });
+
  WebSocket = require('ws'),
  
  wss = new WebSocket.Server({
@@ -50,7 +50,8 @@ express = require('express'),
     // should not be compressed.
   }
 });
- mongoose.connect('mongodb://127.0.0.1/sagar',{ useNewUrlParser: true } );
+ //mongoose.connect('mongodb://127.0.0.1/sagar',{ useNewUrlParser: true } );
+ mongoose.connect('mongodb://nearby:nearby@127.0.0.1/nearBy',{ useNewUrlParser: true });
 app.use(cors());
 app.use(express.static('www'));
 app.use(bodyParser.urlencoded({ extended: true }));
