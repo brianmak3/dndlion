@@ -1,6 +1,0 @@
----
-- hosts: ansible-test
-  remote_user: ubuntu
-  tasks:
-    - name: Enable root login
-      shell: sudo cp ~/.ssh/authorized_keys /root/.ssh/
