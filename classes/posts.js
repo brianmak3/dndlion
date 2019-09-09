@@ -32,7 +32,7 @@ function fetchAndSort(cordinates, maxDist, callback){
      {$sort:{_d:-1,comments:-1,}},
      {
        $group: { _id:  "$location.coordinates",  count:{$sum:1},
-       post: { $first: {_id:"$_id", 
+       post: { $first: {_id:"$_id", id:"$id",
        place:'$place',date:"$date",action:"$action", time:'$time', text:"$text",
        byId:"$byId", likeIds:"$likeIds", comments:"$comments"}}
        }
@@ -128,7 +128,6 @@ function savePost(post, callback){
       newPost.img = post.img;
       newPost.text = post.text;
       newPost.date = now.toString().substr(0,15);
-      newPost.time = Functions.formatAMPM(now) ;
       newPost.save(function(err, res){
         if(err)
           throw err

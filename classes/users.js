@@ -26,7 +26,7 @@ function returnSearch (id, userId, callback){
     Users.find({_id:{$ne:userId},$or:[{"userName" : { '$regex' : id, '$options' : 'i' }},
                         {"firstName" : { '$regex' : id, '$options' : 'i' }},
                         {"lastName" : { '$regex' : id, '$options' : 'i' }}]},
-            {userName: 1, firstName:1,lastName:1, pic: 1, _id: 1}, function (err, res) {
+            {location:1, userName: 1, firstName:1,lastName:1, pic: 1, _id: 1}, function (err, res) {
             if(err)
                 throw err;
             else
@@ -58,7 +58,7 @@ function fetchConnections(userId,all,callback){
       })
   }
   function returnUsers(ids,callback){
-    Users.find({_id: {$in:ids}}, {userName: 1, firstName:1,lastName:1, pic: 1, _id: 1}, function(err, users){
+    Users.find({_id: {$in:ids}},{location:1,userName: 1, firstName:1,lastName:1, pic: 1, _id: 1}, function(err, users){
          if(err)
             throw(err)
           callback(users)

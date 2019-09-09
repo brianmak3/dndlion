@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var userSchema = new mongoose.Schema({
     userId:{type:Number,require:true},
     email:{type:String,require:true},
@@ -16,11 +16,7 @@ var userSchema = new mongoose.Schema({
     noConnections: Number,
     dob:String,
     notifications: Number,
-    location: {
-        lat: Number,
-        lng: Number,
-        place: String
-    },
+    location:String,
     connections: [{
         status: String,
         _id: String

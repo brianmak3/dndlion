@@ -51,7 +51,7 @@ express = require('express'),
   }
 });
  //mongoose.connect('mongodb://127.0.0.1/sagar',{ useNewUrlParser: true } );
- mongoose.connect('mongodb://nearby:nearby@127.0.0.1/nearBy',{ useNewUrlParser: true });
+ mongoose.connect('mongodb://dndlionUser:dndlionPass@127.0.0.1/dndlion',{ useNewUrlParser: true });
 app.use(cors());
 app.use(express.static('www'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -69,7 +69,7 @@ app.post('/appApi',(req,res)=>{
               Users.fetchUser({$or:[{'email': data[1]}, {'userName': data[0]}]},(user)=>{
                   if(!user)
                   Users.createNewUser(data, function(users){
-                      res.status(201).json(user);
+                      res.status(201).json(users);
                   })
                   else{
                        if(user.userName == data[0])
@@ -318,9 +318,9 @@ app.post('/imagePost',(req, res)=>{
                 var url = req.body.url+'//uploads/';
                 var pic = url + req.file.filename,
                 data = req.body;
-                if(data.userId )
+                if(data.userId && data.userId !=='undefined' )
                   updateUserProfilePic(data, pic, res)
-                else if(data.post)
+                else 
                 {
                   data = JSON.parse(data.post);
                   data.img = pic;

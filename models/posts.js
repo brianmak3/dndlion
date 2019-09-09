@@ -17,7 +17,6 @@ var schema = new mongoose.Schema({
     likeIds:[],
     img: String,
     text: String,
-    time:String,
     date:String
 });
 
