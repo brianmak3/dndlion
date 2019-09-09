@@ -5,7 +5,6 @@ var schema = new mongoose.Schema({
         postId: String,
         postById:String,
         notfiedBy: String,
-        time: String,
         date: String,
         text:String,
         id: Number,
