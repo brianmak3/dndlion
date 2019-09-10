@@ -29,7 +29,7 @@ express = require('express'),
  WebSocket = require('ws'),
  
  wss = new WebSocket.Server({
-  port: process.env.PORT,
+  'server': http,
   perMessageDeflate: {
     zlibDeflateOptions: {
       // See zlib defaults.
