@@ -29,7 +29,7 @@ express = require('express'),
  WebSocket = require('ws'),
  
  wss = new WebSocket.Server({
-  port: 8080,
+  port: process.env.PORT,
   perMessageDeflate: {
     zlibDeflateOptions: {
       // See zlib defaults.
@@ -51,7 +51,7 @@ express = require('express'),
   }
 });
  //mongoose.connect('mongodb://127.0.0.1/sagar',{ useNewUrlParser: true } );
- mongoose.connect('mongodb+srv://dndlionUser:dndlionPass@cluster0-sc27x.mongodb.net/Sagar?retryWrites=true&w=majority',{ useNewUrlParser: true });
+ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://dndlionUser:dndlionPass@cluster0-sc27x.mongodb.net/Sagar?retryWrites=true&w=majority',{ useNewUrlParser: true });
 app.use(cors());
 app.use(express.static('www'));
 app.use(bodyParser.urlencoded({ extended: true }));
