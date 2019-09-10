@@ -20,7 +20,6 @@ function saveAndEmitNotification(data,comment, Commtype,broadcast){
 }
  
 module.exports = {
-    formatAMPM: formatAMPM,
     saveAndEmitNotification:saveAndEmitNotification,
     
 }
