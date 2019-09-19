@@ -50,8 +50,8 @@ express = require('express'),
     // should not be compressed.
   }
 });
- //mongoose.connect('mongodb://127.0.0.1/sagar',{ useNewUrlParser: true } );
- mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://dndlionUser:dndlionPass@cluster0-sc27x.mongodb.net/Sagar?retryWrites=true&w=majority',{ useNewUrlParser: true });
+ mongoose.connect('mongodb://127.0.0.1/sagar',{ useNewUrlParser: true } );
+ //mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://dndlionUser:dndlionPass@cluster0-sc27x.mongodb.net/Sagar?retryWrites=true&w=majority',{ useNewUrlParser: true });
 app.use(cors());
 app.use(express.static('www'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,6 +60,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // home
 app.get('/', (req, res) => {
   res.send('Unknown origin.');
+});
+app.get('/privacy', (req, res) => {
+  res.sendFile(path.join(__dirname+'/public/html/privacy.html'));
 });
 app.post('/appApi',(req,res)=>{
     var body = req.body, info;
